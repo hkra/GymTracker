@@ -1,4 +1,4 @@
 # GymTracker
 OMG, am I actually going to the gym? Let's find out!
 
-TestEntry
+2017/01/07
