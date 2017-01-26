@@ -74,17 +74,7 @@ namespace GymTracker
             }
 
             app.UseStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "api",
-                    template: "api/{controller}/{action?}");
-            });
+            app.UseMvc();
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {

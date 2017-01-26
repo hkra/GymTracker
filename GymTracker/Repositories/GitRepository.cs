@@ -55,8 +55,8 @@ namespace GymTracker.Repositories
             }
 
             var contentString = await response.Content.ReadAsStringAsync();
-            var commitInfoList = JsonConvert.DeserializeObject<GitCommitInfoList>(contentString);
-            return commitInfoList.Commits;
+            var commitInfoList = JsonConvert.DeserializeObject<IEnumerable<GitCommitInfo>>(contentString);
+            return commitInfoList;
         }
 
         public async Task<string> CreateNewReadmeTree(string baseTreeHash, string readmeContent)
@@ -81,7 +81,8 @@ namespace GymTracker.Repositories
                 throw new GitSourceException($"Create readme tree operation returned with status ({response.StatusCode})");
             }
 
-            var responseContent = JsonConvert.DeserializeObject<GitTree>(await response.Content.ReadAsStringAsync());
+            var respContentString = await response.Content.ReadAsStringAsync();
+            var responseContent = JsonConvert.DeserializeObject<GitTree>(respContentString);
             return responseContent.Sha;
         }
 
@@ -94,7 +95,7 @@ namespace GymTracker.Repositories
                 Message = message
             });
 
-            var request = new HttpRequestMessage(HttpMethod.Post, GetGitTreeUrl(_userName, _repository)) 
+            var request = new HttpRequestMessage(HttpMethod.Post, GetCommitsGitUrl(_userName, _repository)) 
             { 
                 Content = new StringContent(commitContent)
             };
@@ -102,7 +103,8 @@ namespace GymTracker.Repositories
             var response = await _client.SendAsync(request.Authorize(_accessToken));
             if (!response.IsSuccessStatusCode)
             {
-                throw new GitSourceException($"Create commit operation returned with status ({response.StatusCode})");
+                var body = await response.Content.ReadAsStringAsync();
+                throw new GitSourceException($"Create commit operation returned with status ({response.StatusCode}) and body ({body})");
             }
 
             var responseContent = JsonConvert.DeserializeObject<GitCommit>(await response.Content.ReadAsStringAsync());
@@ -133,6 +135,11 @@ namespace GymTracker.Repositories
         private string GetCommitsUrl(string userName, string repoName)
         {
             return $"https://api.github.com/repos/{userName}/{repoName}/commits";
+        }
+
+        private string GetCommitsGitUrl(string userName, string repoName)
+        {
+            return $"https://api.github.com/repos/{userName}/{repoName}/git/commits";
         }
 
         private string GetGitTreeUrl(string userName, string repoName)

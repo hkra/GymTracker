@@ -9,6 +9,9 @@ namespace GymTracker.Services
 {
     public class SessionsSerivce : ISessionsSerivce
     {
+        // GitHub doesn't respect normal line breaks, so add a couple of spaces at the end of
+        // of the line to indicate a line break.
+        private const string LineBreakIndicator = "  ";
         private readonly IGitRepository _repository;
         
         public SessionsSerivce(IGitRepository repository)
@@ -26,10 +29,11 @@ namespace GymTracker.Services
 
             var now = DateTimeOffset.UtcNow;
             var readme = new StringBuilder(await _repository.GetReadmeAsString())
-                .Append(now.ToString("YYYY/MM/dd"))
+                .Append(now.ToString("yyyy/MM/dd"))
+                .Append(LineBreakIndicator)
                 .Append("\n")
                 .ToString();
-            var commitDateString = now.ToString("MMMM dd, YYYY");
+            var commitDateString = now.ToString("MMMM dd, yyyy");
             var commitMessage = $"Gym attendance for {commitDateString}";
 
             var tree = await _repository.CreateNewReadmeTree(latestCommit.Commit.Tree.Sha, readme);
