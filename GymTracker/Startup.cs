@@ -46,6 +46,7 @@ namespace GymTracker
                 }
             });
 
+            services.AddSession();
             services.AddMvc();
             services.AddRouting();
 
@@ -74,6 +75,7 @@ namespace GymTracker
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvc();
 
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings

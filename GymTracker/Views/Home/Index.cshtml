@@ -1,9 +1,17 @@
 @{
     ViewData["Title"] = "Gym Tracker";
+    var succeeded = TempData["Successful"] != null;
 }
 
-<div class="ui grid">
-    <form action="/" method="POST">
-        <input type="submit" id="record-button" value="I'm gymmin' it up!">
-    </form>
+@if (succeeded)
+{
+<div class="message">
+    <span class="greenish">✓</span>
+    Logged!
 </div>
+}
+<form action="/" method="POST">
+    <div class="flexy">
+        <input type="submit" id="record-button" value="⚡">
+    </div>
+</form>

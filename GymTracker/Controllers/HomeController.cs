@@ -29,6 +29,7 @@ namespace GymTracker.Controllers
             try
             {
                 await _sessions.RecordSession(DateTimeOffset.UtcNow);
+                TempData["Successful"] = true;
                 return RedirectToAction("Index");
             }
             catch (Exception e)

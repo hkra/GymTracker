@@ -10,6 +10,7 @@
       "version": "1.1.0-preview4-final",
       "type": "build"
     },
+    "Microsoft.AspNetCore.Session": "1.1.0",
     "Microsoft.AspNetCore.Routing": "1.1.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.1.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.1.0",
@@ -54,14 +55,12 @@
     "include": [
       "wwwroot",
       "**/*.cshtml",
-      "appsettings.json",
-      "web.config"
+      "appsettings.json"
     ]
   },
 
   "scripts": {
     "precompile": [ "dotnet bundle" ],
-    "prepublish": [ "bower install" ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   },
 
