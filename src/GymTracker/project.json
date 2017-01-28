@@ -35,7 +35,8 @@
     "netcoreapp1.1": {
       "imports": [
         "dotnet5.6",
-        "portable-net45+win8"
+        "portable-net45+win8",
+        "linux-arm"
       ]
     }
   },
@@ -43,6 +44,11 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true
+  },
+
+  "runtimes": {
+    "linux-arm": {},
+    "arch.arm": {}
   },
 
   "runtimeOptions": {
