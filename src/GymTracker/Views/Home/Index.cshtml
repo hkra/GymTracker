@@ -10,7 +10,7 @@
     Logged!
 </div>
 }
-<form action="/" method="POST">
+<form asp-controller="Home" asp-action="/" asp-antiforgery="true" method="post" role="form">
     <div class="flexy">
         <input type="hidden" name="tzOffsetMinutes" id="tzOffsetMinutes">
         <input type="submit" id="record-button" value="⚡">
