@@ -24,11 +24,14 @@ namespace GymTracker.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> Post()
+        public async Task<IActionResult> Post(long tzOffsetMinutes)
         {
             try
             {
-                await _sessions.RecordSession(DateTimeOffset.UtcNow);
+                var offset = TimeSpan.FromMinutes(tzOffsetMinutes * -1);
+                var timestamp = DateTimeOffset.UtcNow.ToOffset(offset);
+
+                await _sessions.RecordSession(timestamp);
                 TempData["Successful"] = true;
                 return RedirectToAction("Index");
             }

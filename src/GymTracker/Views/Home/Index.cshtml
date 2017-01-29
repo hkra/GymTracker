@@ -12,6 +12,11 @@
 }
 <form action="/" method="POST">
     <div class="flexy">
+        <input type="hidden" name="tzOffsetMinutes" id="tzOffsetMinutes">
         <input type="submit" id="record-button" value="⚡">
+        <script>
+            var now = new Date();
+            document.getElementById("tzOffsetMinutes").value = now.getTimezoneOffset();
+        </script>
     </div>
 </form>
