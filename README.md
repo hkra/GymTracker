@@ -1,5 +1,5 @@
 # GymTracker
-OMG, am I actually going to the gym? Let's find out using Git!
+Am I actually going to the gym? Let's find out using Git!
 
 ## Where's the code?!
 In order to separate development commits from attendance commits (so the CI doesn't deploy every time I go to the gym), all app development occurs in the `app` branch.
