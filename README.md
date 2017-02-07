@@ -15,3 +15,4 @@ In order to separate development commits from attendance commits (so the CI does
 2017/01/29  
 2017/02/03  
 2017/02/04  
+2017/02/07  
