@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using GymTracker.Models;
 using GymTracker.Repositories;
 using GymTracker.Services;
@@ -20,6 +17,7 @@ namespace GymTracker
     public class Startup
     {
         private const string GitAccessTokenKey = "GT_GIT_ACCESS_TOKEN";
+        private const string WebAccessKeyKey = "WB_ACCESS_KEY";
 
         public Startup(IHostingEnvironment env)
         {
@@ -40,10 +38,16 @@ namespace GymTracker
             services.Configure<Settings>(options =>
             {
                 options.Git.AccessToken = Configuration[GitAccessTokenKey];
+                options.AccessKey = Configuration[WebAccessKeyKey];
 
                 if (string.IsNullOrWhiteSpace(options.Git.AccessToken))
                 {
                     throw new ArgumentNullException(GitAccessTokenKey);
+                }
+
+                if (string.IsNullOrWhiteSpace(options.AccessKey))
+                {
+                    throw new ArgumentNullException(WebAccessKeyKey);
                 }
             });
 
