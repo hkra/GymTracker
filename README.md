@@ -4,6 +4,8 @@ Am I actually going to the gym? Let's find out using Git!
 ## Where's the code?!
 In order to separate development commits from attendance commits (so the CI doesn't deploy every time I go to the gym), all app development occurs in the `app` branch.
 
+Read about the making of Gym Tracker at [https://danmerritt.com/gym-tracker-visualization-using-github/](https://danmerritt.com/gym-tracker-visualization-using-github/).
+
 ## Attendance Log
 
 2017/01/07  
