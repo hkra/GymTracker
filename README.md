@@ -46,3 +46,4 @@ Read about the making of Gym Tracker at [https://danmerritt.com/gym-tracker-visu
 2017/04/23  
 2017/04/24  
 2017/04/25  
+2017/04/26  
