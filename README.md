@@ -156,3 +156,4 @@ Read about the making of Gym Tracker at [https://danmerritt.com/gym-tracker-visu
 2019/09/03  
 2019/09/07  
 2019/09/12  
+2019/11/04  
