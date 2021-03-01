@@ -174,3 +174,4 @@ Read about the making of Gym Tracker at [https://danmerritt.com/gym-tracker-visu
 2020/11/03  
 2021/02/17  
 2021/02/24  
+2021/03/01  
